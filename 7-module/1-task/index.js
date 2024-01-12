@@ -31,7 +31,6 @@ export default class RibbonMenu {
       )
     );
     this.ribonInner.append(...this.ribbonLinks);
-    this.categoryLinks = this.ribonInner.querySelectorAll(".ribbon__item");
 
     this.elem.addEventListener("click", (event) => {
       this.ribbonMove(event);
