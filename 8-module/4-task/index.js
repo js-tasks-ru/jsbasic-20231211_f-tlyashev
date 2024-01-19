@@ -161,18 +161,7 @@ export default class Cart {
         return;
       }
 
-      let infoPrice = this.modal.elem.querySelector(
-        `.cart-buttons__info-price`
-      );
       let productID = cartItem.product.id;
-
-      if (cartItem.count === 0) {
-        this.modal.elem
-          .querySelector(`[data-product-id="${productID}"]`)
-          .remove();
-        infoPrice.innerHTML = `€${this.getTotalPrice().toFixed(2)}`;
-        return;
-      }
 
       let productCount = this.modal.elem.querySelector(
         `[data-product-id="${productID}"] .cart-counter__count`
@@ -186,7 +175,16 @@ export default class Cart {
         cartItem.product.price * cartItem.count
       ).toFixed(2)}`;
 
+      let infoPrice = this.modal.elem.querySelector(
+        `.cart-buttons__info-price`
+      );
       infoPrice.innerHTML = `€${this.getTotalPrice().toFixed(2)}`;
+
+      if (cartItem.count === 0) {
+        this.modal.elem
+          .querySelector(`[data-product-id="${productID}"]`)
+          .remove();
+      }
     }
   };
 
